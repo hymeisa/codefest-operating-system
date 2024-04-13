@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
 
 public class DesktopGUI {
 
@@ -18,6 +20,8 @@ public class DesktopGUI {
     private int startX, startY; // Variables to store initial mouse click coordinates
     private int endX, endY; // Variables to store final mouse click coordinates
     private boolean drawing; // Flag to indicate if the user is drawing
+    private JButton openCalculatorButton;
+
 
     public DesktopGUI() {
         frame = new JFrame("codefestOS");
@@ -41,6 +45,7 @@ public class DesktopGUI {
 
         // Add quit menu item to file menu
         fileMenu.add(quitMenuItem);
+        
 
         // Add file menu to menu bar
         menuBar.add(fileMenu);
@@ -97,18 +102,22 @@ public class DesktopGUI {
     }
 
     private JPanel createStartupPanel() {
-        JPanel panel = new JPanel(new GridLayout(3, 3, 10, 10)); // 3x3 grid layout with gaps of 10 pixels
+        JPanel panel = new JPanel(new GridLayout(3, 3, 10, 10));
 
-        // Add icons for different applications
-        panel.add(createIconButton("Calculator", "calculator_icon.png"));
-        panel.add(createIconButton("Text Editor", "text_editor_icon.png"));
-        panel.add(createIconButton("Browser", "browser_icon.png"));
-        panel.add(createIconButton("Terminal", "terminal_icon.png"));
-        panel.add(createIconButton("File Explorer", "file_explorer_icon.png"));
-        panel.add(createIconButton("Settings", "settings_icon.png"));
-        panel.add(createIconButton("Music Player", "music_player_icon.png"));
-        panel.add(createIconButton("Image Viewer", "image_viewer_icon.png"));
-        panel.add(createIconButton("Shutdown", "shutdown_icon.png"));
+        String[] iconLabels = {
+            "Calculator", "Text Editor", "Browser",
+            "Terminal", "File Explorer", "Settings",
+            "Music Player", "Image Viewer", "Shutdown"
+        };
+        String[] iconFiles = {
+            "calculator_icon.png", "text_editor_icon.png", "browser_icon.png",
+            "terminal_icon.png", "file_explorer_icon.png", "settings_icon.png",
+            "music_player_icon.png", "image_viewer_icon.png", "shutdown_icon.png"
+        };
+        for (int i = 0; i < iconLabels.length; i++) {
+            JButton button = createIconButton(iconLabels[i], iconFiles[i]);
+            panel.add(button);
+        }
 
         return panel;
     }
@@ -122,13 +131,23 @@ public class DesktopGUI {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Add action for launching the corresponding application
-                JOptionPane.showMessageDialog(frame, "Launching " + name + "...");
+                if (name.equals("Calculator")) {
+                    openCalculator();
+                } else if (name.equals("Shutdown")) {
+                    quitApplication();
+                } else {
+                    JOptionPane.showMessageDialog(frame, "Launching " + name + "...");
+                }
             }
         });
         return button;
     }
-
+    
+    private void openCalculator() {
+        CalculatorGUI calculator = new CalculatorGUI();
+        calculator.setVisible(true);
+    }
+    
 
     private void setBackground() {
         try {
