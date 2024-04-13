@@ -1,0 +1,8 @@
+Bootloader
+Memory Management - Adrian
+CPU Management - Adrian
+GPU Management - Adrian
+File System
+Network Inferface
+Desktop GUI
+Startup GUI
