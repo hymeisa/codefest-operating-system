@@ -13,7 +13,6 @@ public class TextEditorGUI extends JFrame {
     public TextEditorGUI() {
         setTitle("Text Editor");
         setSize(300, 300);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
         textArea = new JTextArea();
@@ -50,7 +49,8 @@ public class TextEditorGUI extends JFrame {
 
         exitMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+                // Close only this TextEditorGUI
+                dispose();
             }
         });
 

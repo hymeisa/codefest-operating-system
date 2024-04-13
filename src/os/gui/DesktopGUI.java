@@ -20,7 +20,6 @@ public class DesktopGUI {
     private int startX, startY; // Variables to store initial mouse click coordinates
     private int endX, endY; // Variables to store final mouse click coordinates
     private boolean drawing; // Flag to indicate if the user is drawing
-    private JButton openCalculatorButton;
 
 
     public DesktopGUI() {
@@ -103,14 +102,14 @@ public class DesktopGUI {
 
     private JPanel createStartupPanel() {
         JPanel panel = new JPanel(new GridLayout(3, 3, 10, 10));
-
+    
         String[] iconLabels = {
-            "Calculator", "Text Editor", "Browser",
+            "Calculator", "Text Editor", "Task Manager", // Replace "Browser" with "Task Manager"
             "Terminal", "File Explorer", "Settings",
             "Music Player", "Image Viewer", "Shutdown"
         };
         String[] iconFiles = {
-            "calculator_icon.png", "text_editor_icon.png", "browser_icon.png",
+            "calculator_icon.png", "text_editor_icon.png", "task_manager_icon.png", // Change the icon filename accordingly
             "terminal_icon.png", "file_explorer_icon.png", "settings_icon.png",
             "music_player_icon.png", "image_viewer_icon.png", "shutdown_icon.png"
         };
@@ -118,10 +117,9 @@ public class DesktopGUI {
             JButton button = createIconButton(iconLabels[i], iconFiles[i]);
             panel.add(button);
         }
-
+    
         return panel;
     }
-
 
     private JButton createIconButton(String name, String iconFilename) {
         JButton button = new JButton(name);
@@ -133,6 +131,10 @@ public class DesktopGUI {
             public void actionPerformed(ActionEvent e) {
                 if (name.equals("Calculator")) {
                     openCalculator();
+                } else if (name.equals("Text Editor")) { // Check if the button is for the text editor
+                    openTextEditor();
+                } else if (name.equals("Task Manager")) {
+                    openTaskManager();
                 } else if (name.equals("Shutdown")) {
                     quitApplication();
                 } else {
@@ -147,7 +149,16 @@ public class DesktopGUI {
         CalculatorGUI calculator = new CalculatorGUI();
         calculator.setVisible(true);
     }
-    
+
+    private void openTextEditor() {
+        TextEditorGUI textEditor = new TextEditorGUI();
+        textEditor.setVisible(true);
+    }    
+
+    private void openTaskManager() {
+        TaskManagerGUI taskManager = new TaskManagerGUI(this); // Pass the reference to DesktopGUI
+        taskManager.show();
+    }
 
     private void setBackground() {
         try {
@@ -237,6 +248,10 @@ public class DesktopGUI {
     // Setter method to set the frame size
     public void setFrameSize(int width, int height) {
         frame.setSize(width, height);
+    }
+
+    public void showFrame() {
+        frame.setVisible(true);
     }
 
     // Add other methods for adding components to the GUI, handling events, etc.
