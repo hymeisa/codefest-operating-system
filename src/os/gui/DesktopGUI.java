@@ -1,4 +1,4 @@
-package src.os.gui;
+package os.gui;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -6,6 +6,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
+import javax.swing.ImageIcon;
+import java.awt.geom.*;
 
 public class DesktopGUI {
 
@@ -14,7 +16,9 @@ public class DesktopGUI {
     private JMenu fileMenu;
     private JMenuItem quitMenuItem;
     private JLabel backgroundLabel;
-    // Add other necessary components
+    private int startX, startY; // Variables to store initial mouse click coordinates
+    private int endX, endY; // Variables to store final mouse click coordinates
+    private boolean drawing; // Flag to indicate if the user is drawing
 
     public DesktopGUI() {
         frame = new JFrame("codefestOS");
@@ -42,20 +46,6 @@ public class DesktopGUI {
         // Add file menu to menu bar
         menuBar.add(fileMenu);
 
-        // Create edit menu and menu items
-        JMenu editMenu = new JMenu("Edit");
-        JMenuItem cutMenuItem = new JMenuItem("Cut");
-        JMenuItem copyMenuItem = new JMenuItem("Copy");
-        JMenuItem pasteMenuItem = new JMenuItem("Paste");
-
-        // Add menu items to edit menu
-        editMenu.add(cutMenuItem);
-        editMenu.add(copyMenuItem);
-        editMenu.add(pasteMenuItem);
-
-        // Add edit menu to menu bar
-        menuBar.add(editMenu);
-
         // Set menu bar to frame
         frame.setJMenuBar(menuBar);
 
@@ -66,16 +56,31 @@ public class DesktopGUI {
         frame.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                if (SwingUtilities.isRightMouseButton(e)) {
-                    // Display a popup menu at the mouse location
-                    JPopupMenu popupMenu = new JPopupMenu();
-                    JMenuItem newItem = new JMenuItem("New");
-                    JMenuItem openItem = new JMenuItem("Open");
-                    JMenuItem deleteItem = new JMenuItem("Delete");
-                    popupMenu.add(newItem);
-                    popupMenu.add(openItem);
-                    popupMenu.add(deleteItem);
-                    popupMenu.show(frame, e.getX(), e.getY());
+                if (SwingUtilities.isLeftMouseButton(e)) {
+                    startX = e.getX();
+                    startY = e.getY();
+                    drawing = true;
+                }
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                if (SwingUtilities.isLeftMouseButton(e)) {
+                    endX = e.getX();
+                    endY = e.getY();
+                    drawing = false;
+                    drawTriangle(startX, startY, endX, endY);
+                }
+            }
+        });
+
+        frame.addMouseMotionListener(new MouseAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                if (drawing) {
+                    endX = e.getX();
+                    endY = e.getY();
+                    frame.repaint();
                 }
             }
         });
@@ -98,7 +103,13 @@ public class DesktopGUI {
         }
     }
 
-    
+    private void drawTriangle(int x1, int y1, int x2, int y2) {
+        Graphics2D g2d = (Graphics2D) frame.getContentPane().getGraphics();
+        g2d.setColor(Color.BLUE);
+        int[] xPoints = {x1, (x1 + x2) / 2, x2};
+        int[] yPoints = {y1, y2, y1};
+        g2d.fillPolygon(xPoints, yPoints, 3);
+    }
 
     public void show() {
         // Set up and display the desktop GUI
