@@ -7,7 +7,6 @@ import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.ImageIcon;
-import java.awt.geom.*;
 
 public class DesktopGUI {
 
@@ -52,7 +51,7 @@ public class DesktopGUI {
         // Set background image
         setBackground();
 
-        // Add mouse listener for right-click events
+        // Add mouse listener for left-click events
         frame.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -69,7 +68,7 @@ public class DesktopGUI {
                     endX = e.getX();
                     endY = e.getY();
                     drawing = false;
-                    drawTriangle(startX, startY, endX, endY);
+                    drawRectangle(startX, startY, endX, endY);
                 }
             }
         });
@@ -103,13 +102,16 @@ public class DesktopGUI {
         }
     }
 
-    private void drawTriangle(int x1, int y1, int x2, int y2) {
+    private void drawRectangle(int x1, int y1, int x2, int y2) {
         Graphics2D g2d = (Graphics2D) frame.getContentPane().getGraphics();
         g2d.setColor(Color.BLUE);
-        int[] xPoints = {x1, (x1 + x2) / 2, x2};
-        int[] yPoints = {y1, y2, y1};
-        g2d.fillPolygon(xPoints, yPoints, 3);
+        int width = Math.abs(x2 - x1);
+        int height = Math.abs(y2 - y1);
+        int upperLeftX = Math.min(x1, x2);
+        int upperLeftY = Math.min(y1, y2);
+        g2d.fillRect(upperLeftX, upperLeftY, width, height);
     }
+    
 
     public void show() {
         // Set up and display the desktop GUI
@@ -133,6 +135,7 @@ public class DesktopGUI {
     }
 
     // Add other methods for adding components to the GUI, handling events, etc.
+    
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
