@@ -1,3 +1,5 @@
+package tester;
+
 import java.util.*;
 
 //import MEMORY_MANAGEMENT._RAM._mem_locations;
@@ -47,14 +49,18 @@ public class MEMORY_MANAGEMENT {
             this._total_ram = _new_total_ram;
         }
 
-        private boolean _allocate_memory(int start, int end) {
+        private int _allocate_memory(int start, int end) {
             if(start < 0 || start > this._get_total_ram()) {
-                return false;
+                System.out.println("HE-1RE: " + this._ram_data.size());
+                return -1;
             }
 
             this._ram_data.add(new _mem_locations(start, end));
 
-            return true;
+            System.out.println("\t\tstart,end: " + start + "," + end);
+            System.out.println("\t\tHERE: " + this._ram_data.get(this._ram_data.size() - 1)._get_start() + ", " + this._ram_data.get(this._ram_data.size() - 1)._get_end());
+
+            return this._ram_data.size() - 1;
         }
 
         private boolean check_memory(_mem_locations mem_locations, int index) {
@@ -75,21 +81,34 @@ public class MEMORY_MANAGEMENT {
 
     };
 
-    public boolean allocate_memory(int _size_to_allocate) {
+    public int allocate_memory(int _size_to_allocate) {
 
-        for(int x = 0; x < RAM._ram_data.size(); x++) {
-            if(RAM.check_memory(new _mem_locations((int)RAM._ram_data.get(x)._get_start() + 1, (int)RAM._ram_data.get(x)._get_start() + _size_to_allocate + 1), x) == true) {
-                RAM._allocate_memory(RAM._ram_data.get(x)._get_start() + 1, RAM._ram_data.get(x)._get_start() + _size_to_allocate + x + 1);
-                return true;
+        if(RAM._ram_data.size() == 0) {
+            return RAM._allocate_memory(0, _size_to_allocate - 1);
+        }
+
+        for(int x = 0; x < RAM._ram_data.size() + 1; x++) {
+            //System.out.println("Debug: " + RAM._ram_data.size() + ", " + x);
+            if(RAM._ram_data.size() == x) {
+                return RAM._allocate_memory(RAM._ram_data.get(x - 1)._get_end() + 1, RAM._ram_data.get(x - 1)._get_end() + _size_to_allocate + x);
+            }
+            if(RAM.check_memory(new _mem_locations((int)RAM._ram_data.get(x)._get_end() + 1, (int)RAM._ram_data.get(x)._get_end() + _size_to_allocate), x) == true) {
+                return RAM._allocate_memory(RAM._ram_data.get(x)._get_end() + 1, RAM._ram_data.get(x)._get_end() + _size_to_allocate + x);
             }
         }
-        return false;
-
+        System.out.println("FAILED");
+        return -1;
     }
 
     public static void main(String[] args) {
-        
+        MEMORY_MANAGEMENT tester = new MEMORY_MANAGEMENT();
         System.out.println("Total Ram: " + RAM._get_total_ram());
+        System.out.println("Allocation Index1: " + tester.allocate_memory(20));
+        System.out.println("Allocation Index2: " + tester.allocate_memory(20));
+        System.out.println("Allocation Index3: " + tester.allocate_memory(20));
+        System.out.println("Allocation Index4: " + tester.allocate_memory(30));
+
+
 
     }
 
