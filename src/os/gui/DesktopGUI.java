@@ -106,12 +106,12 @@ public class DesktopGUI {
         String[] iconLabels = {
             "Calculator", "Text Editor", "Task Manager", // Replace "Browser" with "Task Manager"
             "Terminal", "File Manager", "Settings",
-            "Music Player", "Image Viewer", "Shutdown"
+            "Network", "Image Viewer", "Shutdown"
         };
         String[] iconFiles = {
             "calculator_icon.png", "text_editor_icon.png", "task_manager_icon.png", // Change the icon filename accordingly
             "terminal_icon.png", "file_manager_icon.png", "settings_icon.png",
-            "music_player_icon.png", "image_viewer_icon.png", "shutdown_icon.png"
+            "network.png", "image_viewer_icon.png", "shutdown_icon.png"
         };
         for (int i = 0; i < iconLabels.length; i++) {
             JButton button = createIconButton(iconLabels[i], iconFiles[i]);
@@ -123,7 +123,7 @@ public class DesktopGUI {
 
     private JButton createIconButton(String name, String iconFilename) {
         JButton button = new JButton(name);
-        button.setIcon(new ImageIcon("src/os/gui/icons/" + iconFilename)); // Assuming icons are stored in src/os/gui/icons/
+        button.setIcon(new ImageIcon("src/os/gui/icons/" + iconFilename));
         button.setVerticalTextPosition(SwingConstants.BOTTOM);
         button.setHorizontalTextPosition(SwingConstants.CENTER);
         button.addActionListener(new ActionListener() {
@@ -131,7 +131,7 @@ public class DesktopGUI {
             public void actionPerformed(ActionEvent e) {
                 if (name.equals("Calculator")) {
                     openCalculator();
-                } else if (name.equals("Text Editor")) { // Check if the button is for the text editor
+                } else if (name.equals("Text Editor")) {
                     openTextEditor();
                 } else if (name.equals("Task Manager")) {
                     openTaskManager();
@@ -139,6 +139,8 @@ public class DesktopGUI {
                     openFileManager();
                 } else if (name.equals("Shutdown")) {
                     quitApplication();
+                } else if (name.equals("Network")) { // Add handling for the Network button
+                    openNetwork();
                 } else {
                     JOptionPane.showMessageDialog(frame, "Launching " + name + "...");
                 }
@@ -166,6 +168,12 @@ public class DesktopGUI {
         FileManagerGUI fileManager = new FileManagerGUI();
         fileManager.show();
     }
+
+    private void openNetwork() {
+        NetworkGUI network = new NetworkGUI();
+        network.setVisible(true);
+    }
+    
 
     private void setBackground() {
         try {
@@ -260,6 +268,7 @@ public class DesktopGUI {
     public void showFrame() {
         frame.setVisible(true);
     }
+    
 
     // Add other methods for adding components to the GUI, handling events, etc.
 

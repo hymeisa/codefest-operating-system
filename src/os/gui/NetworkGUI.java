@@ -2,8 +2,7 @@ package os.gui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -19,7 +18,7 @@ public class NetworkGUI extends JFrame {
 
     public NetworkGUI() {
         super("Website Information");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Set close operation to dispose
         setSize(500, 400);
         setLocationRelativeTo(null);
 
