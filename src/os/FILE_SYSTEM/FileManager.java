@@ -1,4 +1,4 @@
-package os.FILE_SYSTEM;
+package src.os.FILE_SYSTEM;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
