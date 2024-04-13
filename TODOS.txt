@@ -1,6 +1,6 @@
 Bootloader
 Memory Management - Adrian
-CPU Management - Adrian
+src.CPU Management - Adrian
 GPU Management - Adrian
 File System - Riz 
 Network Inferface
