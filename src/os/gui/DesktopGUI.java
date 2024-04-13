@@ -3,8 +3,7 @@ package src.os.gui;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -18,7 +17,7 @@ public class DesktopGUI {
     // Add other necessary components
 
     public DesktopGUI() {
-        frame = new JFrame("Operating System Desktop");
+        frame = new JFrame("codefestOS");
         frame.setSize(800, 600); // Set the initial size of the frame
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Close the application when the frame is closed
 
@@ -63,6 +62,24 @@ public class DesktopGUI {
         // Set background image
         setBackground();
 
+        // Add mouse listener for right-click events
+        frame.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (SwingUtilities.isRightMouseButton(e)) {
+                    // Display a popup menu at the mouse location
+                    JPopupMenu popupMenu = new JPopupMenu();
+                    JMenuItem newItem = new JMenuItem("New");
+                    JMenuItem openItem = new JMenuItem("Open");
+                    JMenuItem deleteItem = new JMenuItem("Delete");
+                    popupMenu.add(newItem);
+                    popupMenu.add(openItem);
+                    popupMenu.add(deleteItem);
+                    popupMenu.show(frame, e.getX(), e.getY());
+                }
+            }
+        });
+
         // Initialize other components
     }
 
@@ -80,6 +97,8 @@ public class DesktopGUI {
             e.printStackTrace();
         }
     }
+
+    
 
     public void show() {
         // Set up and display the desktop GUI
