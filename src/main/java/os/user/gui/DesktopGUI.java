@@ -55,7 +55,7 @@ public class DesktopGUI {
     
     // Add methods for adding components to the GUI, handling events, etc.
     
-    public static void main(String[] args) {
+    public static void main(String  [] args) {
         SwingUtilities.invokeLater(() -> {
             DesktopGUI gui = new DesktopGUI();
             gui.show();
