@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class MEMORY_MANAGEMENT {
 
     
@@ -9,6 +11,7 @@ public class MEMORY_MANAGEMENT {
 
     private class _memory_data {
         private int _total_ram = GIGABYTE;
+        private ArrayList<int> _ram_data = new ArrayList<int>();
         
         public int _get_total_ram() {
             return this._total_ram;
@@ -16,7 +19,14 @@ public class MEMORY_MANAGEMENT {
         public void _change_total_ram(int _new_total_ram) {
             this._total_ram = _new_total_ram;
         }
+
+        private _
+
     };
+
+    public boolean _allocate_memory(int _size_to_allocate) {
+
+    }
 
 
     public static void main(String[] args) {
