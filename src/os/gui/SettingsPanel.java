@@ -1,5 +1,4 @@
 package os.gui;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,14 +11,13 @@ public class SettingsPanel {
     private JButton saveButton;
     private JTextField usernameField;
     private JPasswordField passwordField;
-    private JComboBox<String> languageComboBox;
 
     public SettingsPanel() {
         frame = new JFrame("Settings Panel");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         mainPanel = new JPanel();
-        mainPanel.setLayout(new GridLayout(4, 2));
+        mainPanel.setLayout(new GridLayout(3, 2));
 
         // Username field
         mainPanel.add(new JLabel("Username:"));
@@ -30,12 +28,6 @@ public class SettingsPanel {
         mainPanel.add(new JLabel("Password:"));
         passwordField = new JPasswordField(20);
         mainPanel.add(passwordField);
-
-        // Language selection
-        mainPanel.add(new JLabel("Language:"));
-        String[] languages = {"English", "Spanish", "French", "German"};
-        languageComboBox = new JComboBox<>(languages);
-        mainPanel.add(languageComboBox);
 
         // Save button
         saveButton = new JButton("Save");
@@ -56,11 +48,10 @@ public class SettingsPanel {
         // Code to save settings
         String username = usernameField.getText();
         String password = new String(passwordField.getPassword());
-        String selectedLanguage = (String) languageComboBox.getSelectedItem();
 
         // Placeholder code to display saved settings
         JOptionPane.showMessageDialog(frame, "Settings saved:\nUsername: " + username +
-                "\nPassword: " + password + "\nLanguage: " + selectedLanguage);
+                "\nPassword: " + password);
     }
 
     public void show() {

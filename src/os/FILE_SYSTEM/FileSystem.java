@@ -55,4 +55,12 @@ public class FileSystem {
 
     }
 
+
+    public void renameFile(String oldFileName, String newFilename){
+        File oldFile = new File(oldFileName);
+        File newFile = new File(newFilename);
+
+
+    }
+
 }

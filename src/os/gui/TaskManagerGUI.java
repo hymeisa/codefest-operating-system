@@ -4,18 +4,24 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
-public class TaskManager {
+public class TaskManagerGUI {
 
     private JFrame frame;
     private JList<String> taskList;
     private DefaultListModel<String> listModel;
     private JButton addButton;
     private JButton removeButton;
+    private List<JFrame> openGUIs; // List to store references to open GUIs
+    private DesktopGUI desktopGUI; // Reference to the DesktopGUI instance
 
-    public TaskManager() {
+    public TaskManagerGUI(DesktopGUI desktopGUI) {
+        this.desktopGUI = desktopGUI; // Store the reference to DesktopGUI
         frame = new JFrame("Task Manager");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // Prevent closing the application when the frame is closed
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLayout(new BorderLayout());
 
         listModel = new DefaultListModel<>();
@@ -48,6 +54,8 @@ public class TaskManager {
 
         frame.setSize(400, 300);
         frame.setLocationRelativeTo(null);
+
+        openGUIs = new ArrayList<>(); // Initialize the list of open GUIs
     }
 
     private void addTask() {
@@ -66,14 +74,36 @@ public class TaskManager {
         }
     }
 
+    // Method to add a GUI to the list of open GUIs
+    public void addOpenGUI(JFrame gui) {
+        openGUIs.add(gui);
+    }
+
+    // Method to remove a GUI from the list of open GUIs
+    public void removeOpenGUI(JFrame gui) {
+        openGUIs.remove(gui);
+    }
+
+    // Method to show the TaskManagerGUI
     public void show() {
         frame.setVisible(true);
     }
 
+    // Method to close the TaskManagerGUI
+    public void close() {
+        frame.dispose(); // Dispose the TaskManagerGUI frame
+        // Check if there are no other open GUIs
+        if (openGUIs.isEmpty()) {
+            desktopGUI.showFrame(); // Show the DesktopGUI if no other GUIs are open
+        }
+    }
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            TaskManager taskManager = new TaskManager();
-            taskManager.show();
+            DesktopGUI desktopGUI = new DesktopGUI();
+            TaskManagerGUI taskManager = new TaskManagerGUI(desktopGUI); // Pass the reference to DesktopGUI
+            desktopGUI.showFrame(); // Show the DesktopGUI
+            taskManager.show(); // Show the TaskManagerGUI
         });
     }
 }
