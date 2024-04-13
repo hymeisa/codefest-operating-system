@@ -1,8 +1,5 @@
-package src;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+package src.os.FILE_SYSTEM;
+import java.io.*;
 
 public class FileSystem {
 
@@ -45,6 +42,17 @@ public class FileSystem {
             e.printStackTrace();
         }
         return content.toString();
+    }
+
+    public void writeFile(String filename, String content){
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))){
+            writer.write(content);
+            System.out.println("Content written to file: " + filename);
+        } catch(IOException e){
+            System.out.println("error occurred while writing to file");
+            e.printStackTrace();
+        }
+
     }
 
 }
