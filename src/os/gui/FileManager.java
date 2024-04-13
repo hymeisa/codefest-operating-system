@@ -1,4 +1,4 @@
-package os.gui;
+package src.os.gui;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
