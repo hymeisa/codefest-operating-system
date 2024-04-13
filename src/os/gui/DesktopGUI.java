@@ -1,11 +1,11 @@
 package os.gui;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 public class DesktopGUI {
@@ -59,6 +59,8 @@ public class DesktopGUI {
                     startX = e.getX();
                     startY = e.getY();
                     drawing = true;
+                } else if (SwingUtilities.isRightMouseButton(e)) {
+                    showContextMenu(e.getX(), e.getY());
                 }
             }
 
@@ -111,7 +113,50 @@ public class DesktopGUI {
         int upperLeftY = Math.min(y1, y2);
         g2d.fillRect(upperLeftX, upperLeftY, width, height);
     }
-    
+
+    private void showContextMenu(int x, int y) {
+        JPopupMenu popupMenu = new JPopupMenu();
+        JMenuItem newItem = new JMenuItem("New");
+        JMenuItem openItem = new JMenuItem("Open");
+        JMenuItem saveItem = new JMenuItem("Save");
+        JMenuItem exitItem = new JMenuItem("Exit");
+
+        popupMenu.add(newItem);
+        popupMenu.add(openItem);
+        popupMenu.add(saveItem);
+        popupMenu.addSeparator();
+        popupMenu.add(exitItem);
+
+        newItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Add functionality for new item
+            }
+        });
+
+        openItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Add functionality for open item
+            }
+        });
+
+        saveItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Add functionality for save item
+            }
+        });
+
+        exitItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                quitApplication();
+            }
+        });
+
+        popupMenu.show(frame, x, y);
+    }
 
     public void show() {
         // Set up and display the desktop GUI
@@ -135,7 +180,6 @@ public class DesktopGUI {
     }
 
     // Add other methods for adding components to the GUI, handling events, etc.
-    
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
