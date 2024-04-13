@@ -1,6 +1,5 @@
-package src;
-import java.io.File;
-import java.io.IOException;
+package src.os.FILE_SYSTEM;
+import java.io.*;
 
 public class FileSystem {
 
@@ -18,6 +17,7 @@ public class FileSystem {
             e.printStackTrace();
             
         }
+
     }
 
     public void deleteFile(String filename){
@@ -29,4 +29,30 @@ public class FileSystem {
             System.out.println("failed to delete file.");
         }
     }
+
+    public String readFile(String filename){
+        StringBuilder content = new StringBuilder();
+        try(BufferedReader reader = new BufferedReader(new FileReader(filename))){
+            String line;
+            while((line = reader.readLine()) != null){
+                content.append(line).append("\n");
+            }
+        } catch(IOException e){
+            System.out.println("error occurred while reading file");
+            e.printStackTrace();
+        }
+        return content.toString();
+    }
+
+    public void writeFile(String filename, String content){
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))){
+            writer.write(content);
+            System.out.println("Content written to file: " + filename);
+        } catch(IOException e){
+            System.out.println("error occurred while writing to file");
+            e.printStackTrace();
+        }
+
+    }
+
 }
