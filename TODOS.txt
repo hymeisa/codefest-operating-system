@@ -2,7 +2,7 @@ Bootloader
 Memory Management - Adrian
 CPU Management - Adrian
 GPU Management - Adrian
-File System
+File System - Riz 
 Network Inferface
 Desktop GUI
 Startup GUI
