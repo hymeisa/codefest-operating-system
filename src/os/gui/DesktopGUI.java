@@ -86,8 +86,49 @@ public class DesktopGUI {
             }
         });
 
+        // Initialize startup panel
+        JPanel startupPanel = createStartupPanel();
+        frame.getContentPane().add(startupPanel); // Add the startup panel to the frame's content pane
+
+        // Set frame visibility
+        frame.setVisible(true);
+
         // Initialize other components
     }
+
+    private JPanel createStartupPanel() {
+        JPanel panel = new JPanel(new GridLayout(3, 3, 10, 10)); // 3x3 grid layout with gaps of 10 pixels
+
+        // Add icons for different applications
+        panel.add(createIconButton("Calculator", "calculator_icon.png"));
+        panel.add(createIconButton("Text Editor", "text_editor_icon.png"));
+        panel.add(createIconButton("Browser", "browser_icon.png"));
+        panel.add(createIconButton("Terminal", "terminal_icon.png"));
+        panel.add(createIconButton("File Explorer", "file_explorer_icon.png"));
+        panel.add(createIconButton("Settings", "settings_icon.png"));
+        panel.add(createIconButton("Music Player", "music_player_icon.png"));
+        panel.add(createIconButton("Image Viewer", "image_viewer_icon.png"));
+        panel.add(createIconButton("Shutdown", "shutdown_icon.png"));
+
+        return panel;
+    }
+
+
+    private JButton createIconButton(String name, String iconFilename) {
+        JButton button = new JButton(name);
+        button.setIcon(new ImageIcon("src/os/gui/icons/" + iconFilename)); // Assuming icons are stored in src/os/gui/icons/
+        button.setVerticalTextPosition(SwingConstants.BOTTOM);
+        button.setHorizontalTextPosition(SwingConstants.CENTER);
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Add action for launching the corresponding application
+                JOptionPane.showMessageDialog(frame, "Launching " + name + "...");
+            }
+        });
+        return button;
+    }
+
 
     private void setBackground() {
         try {
@@ -184,7 +225,6 @@ public class DesktopGUI {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             DesktopGUI gui = new DesktopGUI();
-            gui.show();
         });
     }
 }
