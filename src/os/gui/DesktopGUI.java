@@ -101,16 +101,16 @@ public class DesktopGUI {
     }
 
     private JPanel createStartupPanel() {
-        JPanel panel = new JPanel(new GridLayout(3, 3, 10, 10));
+        JPanel panel = new JPanel(new GridLayout(3, 3, 100, 100));
     
         String[] iconLabels = {
             "Calculator", "Text Editor", "Task Manager", // Replace "Browser" with "Task Manager"
-            "Terminal", "File Explorer", "Settings",
+            "Terminal", "File Manager", "Settings",
             "Music Player", "Image Viewer", "Shutdown"
         };
         String[] iconFiles = {
             "calculator_icon.png", "text_editor_icon.png", "task_manager_icon.png", // Change the icon filename accordingly
-            "terminal_icon.png", "file_explorer_icon.png", "settings_icon.png",
+            "terminal_icon.png", "file_manager_icon.png", "settings_icon.png",
             "music_player_icon.png", "image_viewer_icon.png", "shutdown_icon.png"
         };
         for (int i = 0; i < iconLabels.length; i++) {
@@ -135,6 +135,8 @@ public class DesktopGUI {
                     openTextEditor();
                 } else if (name.equals("Task Manager")) {
                     openTaskManager();
+                } else if (name.equals("File Manager")) {
+                    openFileManager();
                 } else if (name.equals("Shutdown")) {
                     quitApplication();
                 } else {
@@ -158,6 +160,11 @@ public class DesktopGUI {
     private void openTaskManager() {
         TaskManagerGUI taskManager = new TaskManagerGUI(this); // Pass the reference to DesktopGUI
         taskManager.show();
+    }
+
+    private void openFileManager() {
+        FileManagerGUI fileManager = new FileManagerGUI();
+        fileManager.show();
     }
 
     private void setBackground() {

@@ -1,5 +1,4 @@
 package os.gui;
-
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -9,16 +8,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
-public class FileManager {
+public class FileManagerGUI {
 
     private JFrame frame;
     private JList<String> fileList;
     private DefaultListModel<String> listModel;
     private File currentDirectory;
 
-    public FileManager() {
+    public FileManagerGUI() {
         frame = new JFrame("File Manager");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLayout(new BorderLayout());
 
         listModel = new DefaultListModel<>();
@@ -144,7 +143,7 @@ public class FileManager {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            FileManager fileManager = new FileManager();
+            FileManagerGUI fileManager = new FileManagerGUI();
             fileManager.show();
         });
     }
