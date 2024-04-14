@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 
-public class DesktopGUI /*implements Runnable*/ {
+public class DesktopGUI implements Runnable {
 
     private JFrame frame;
     private JMenuBar menuBar;
@@ -145,8 +145,6 @@ public class DesktopGUI /*implements Runnable*/ {
                     openTerminal();
                 } else if (name.equals("Image Viewer")) {
                     openImageViewer();
-                } else if () {
-                   openSettings(); 
                 } else {
                     JOptionPane.showMessageDialog(frame, "Launching " + name + "...");
                 }
@@ -188,11 +186,6 @@ public class DesktopGUI /*implements Runnable*/ {
     private void openImageViewer() {
         ImageViewerGUI imageViewer = new ImageViewerGUI();
         imageViewer.setVisible(true);
-    }
-
-    private void openSettings() {
-        SettingsGUI settings = new SettingsGUI();
-        settings.setVisible(true);
     }
     
 
@@ -293,10 +286,8 @@ public class DesktopGUI /*implements Runnable*/ {
 
     // Add other methods for adding components to the GUI, handling events, etc.
 
-    /*public void run() {
-
-    }*/
-    public static void main(String[] args) {
+    @Override
+    public void run() {
         SwingUtilities.invokeLater(() -> {
             DesktopGUI gui = new DesktopGUI();
         });

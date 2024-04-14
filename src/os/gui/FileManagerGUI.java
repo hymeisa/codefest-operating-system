@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
-public class FileManagerGUI {
+public class FileManagerGUI implements Runnable {
 
     private JFrame frame;
     private JList<String> fileList;
@@ -141,7 +141,8 @@ public class FileManagerGUI {
         frame.setVisible(true);
     }
 
-    public static void main(String[] args) {
+    @Override
+    public void run() {
         SwingUtilities.invokeLater(() -> {
             FileManagerGUI fileManager = new FileManagerGUI();
             fileManager.show();

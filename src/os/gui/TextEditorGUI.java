@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
-public class TextEditorGUI extends JFrame {
+public class TextEditorGUI extends JFrame implements Runnable {
 
     private JTextArea textArea;
     private JFileChooser fileChooser;
@@ -100,7 +100,8 @@ public class TextEditorGUI extends JFrame {
         }
     }
 
-    public static void main(String[] args) {
+    @Override
+    public void run() {
         SwingUtilities.invokeLater(() -> {
             new TextEditorGUI().setVisible(true);
         });

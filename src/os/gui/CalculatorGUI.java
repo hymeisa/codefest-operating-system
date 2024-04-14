@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class CalculatorGUI extends JFrame {
+public class CalculatorGUI extends JFrame implements Runnable {
 
     private JTextField textField;
 
@@ -125,7 +125,8 @@ public class CalculatorGUI extends JFrame {
         }.parse();
     }
 
-    public static void main(String[] args) {
+    @Override
+    public void run() {
         SwingUtilities.invokeLater(() -> {
             new CalculatorGUI().setVisible(true);
         });

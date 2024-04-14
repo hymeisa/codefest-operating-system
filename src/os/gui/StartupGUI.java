@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class StartupGUI {
+public class StartupGUI implements Runnable {
 
     private JFrame frame;
 
@@ -38,7 +38,8 @@ public class StartupGUI {
         frame.setVisible(true);
     }
 
-    public static void main(String[] args) {
+    @Override
+    public void run() {
         SwingUtilities.invokeLater(() -> {
             new StartupGUI();
         });

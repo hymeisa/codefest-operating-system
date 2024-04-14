@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ApplicationLauncher {
+public class ApplicationLauncher implements Runnable {
 
     private JFrame frame;
     private JPanel mainPanel;
@@ -60,7 +60,8 @@ public class ApplicationLauncher {
         frame.setVisible(true);
     }
 
-    public static void main(String[] args) {
+    @Override
+    public void run() {
         SwingUtilities.invokeLater(() -> {
             ApplicationLauncher launcher = new ApplicationLauncher();
             launcher.show();

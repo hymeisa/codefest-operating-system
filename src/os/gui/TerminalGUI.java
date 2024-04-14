@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 
-public class TerminalGUI extends JFrame {
+public class TerminalGUI extends JFrame implements Runnable {
     private JTextArea outputArea;
     private JTextField inputField;
     private JScrollPane scrollPane;
@@ -204,7 +204,8 @@ public class TerminalGUI extends JFrame {
         outputArea.append("pwn              : You've been pwned!\n");
     }
 
-    public static void main(String[] args) {
+    @Override
+    public void run() {
         SwingUtilities.invokeLater(TerminalGUI::new);
     }
 }
