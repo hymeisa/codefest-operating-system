@@ -1,4 +1,4 @@
-package RAM;
+package src.os.RAM;
 
 import java.util.*;
 
