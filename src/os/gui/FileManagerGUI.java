@@ -1,4 +1,5 @@
 package gui;
+
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -8,12 +9,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
-public class FileManagerGUI implements Runnable {
+public class FileManagerGUI {
 
     private JFrame frame;
     private JList<String> fileList;
     private DefaultListModel<String> listModel;
     private File currentDirectory;
+
+    // Define the dedicated directory for the program
+    private static final String PROGRAM_DIRECTORY = System.getProperty("user.home") + File.separator + "FileManager";
 
     public FileManagerGUI() {
         frame = new JFrame("File Manager");
@@ -74,7 +78,15 @@ public class FileManagerGUI implements Runnable {
             }
         });
 
-        listFiles(FileSystemView.getFileSystemView().getHomeDirectory());
+        // Ensure the dedicated directory exists
+        File programDir = new File(PROGRAM_DIRECTORY);
+        if (!programDir.exists()) {
+            programDir.mkdir();
+        }
+
+        // Set the current directory to the program directory
+        currentDirectory = programDir;
+        listFiles(programDir);
     }
 
     private void listFiles(File directory) {
