@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-public class ImageViewerGUI extends JFrame {
+public class ImageViewerGUI extends JFrame implements Runnable {
     private JLabel imageLabel;
 
     public ImageViewerGUI() {
@@ -67,7 +67,8 @@ public class ImageViewerGUI extends JFrame {
         return extension.equals("jpg") || extension.equals("jpeg") || extension.equals("png") || extension.equals("gif");
     }
 
-    public static void main(String[] args) {
+    @Override
+    public void run() {
         SwingUtilities.invokeLater(() -> {
             new ImageViewerGUI().setVisible(true);
         });

@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TaskManagerGUI {
+public class TaskManagerGUI implements Runnable {
 
     private JFrame frame;
     private JList<String> taskList;
@@ -98,7 +98,8 @@ public class TaskManagerGUI {
         }
     }
 
-    public static void main(String[] args) {
+    @Override
+    public void run() {
         SwingUtilities.invokeLater(() -> {
             DesktopGUI desktopGUI = new DesktopGUI();
             TaskManagerGUI taskManager = new TaskManagerGUI(desktopGUI); // Pass the reference to DesktopGUI

@@ -6,7 +6,7 @@ import java.awt.event.*;
 import java.io.File;
 import javax.imageio.ImageIO;
 
-public class SettingsGUI extends JFrame {
+public class SettingsGUI extends JFrame implements Runnable {
     private JLabel wallpaperLabel;
     private DesktopGUI desktopGUI; // Reference to the DesktopGUI instance
 
@@ -83,7 +83,8 @@ public class SettingsGUI extends JFrame {
         }
     }
 
-    public static void main(String[] args) {
+    @Override
+    public void run() {
         SwingUtilities.invokeLater(() -> {
             new SettingsGUI(new DesktopGUI()).setVisible(true);
         });

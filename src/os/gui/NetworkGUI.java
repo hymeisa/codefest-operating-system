@@ -11,7 +11,7 @@ import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class NetworkGUI extends JFrame {
+public class NetworkGUI extends JFrame implements Runnable {
     private JTextField urlField;
     private JButton fetchButton;
     private JTextArea infoArea;
@@ -147,12 +147,12 @@ public class NetworkGUI extends JFrame {
         return paragraphs.toString().split("\n");
     }
 
-    public static void main(String args[]) {
-        SwingUtilities.invokeLater(new Runnable() {
+    //public static void main(String args[]) {
+        //SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                 new NetworkGUI().setVisible(true);
             }
-        });
-    }
+        //});
+    //}
 }
