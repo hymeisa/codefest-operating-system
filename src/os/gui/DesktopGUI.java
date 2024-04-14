@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 
-public class DesktopGUI {
+public class DesktopGUI /*implements Runnable*/ {
 
     private JFrame frame;
     private JMenuBar menuBar;
@@ -20,7 +20,6 @@ public class DesktopGUI {
     private int startX, startY; // Variables to store initial mouse click coordinates
     private int endX, endY; // Variables to store final mouse click coordinates
     private boolean drawing; // Flag to indicate if the user is drawing
-
 
     public DesktopGUI() {
         frame = new JFrame("codefestOS");
@@ -146,6 +145,8 @@ public class DesktopGUI {
                     openTerminal();
                 } else if (name.equals("Image Viewer")) {
                     openImageViewer();
+                } else if () {
+                   openSettings(); 
                 } else {
                     JOptionPane.showMessageDialog(frame, "Launching " + name + "...");
                 }
@@ -188,6 +189,12 @@ public class DesktopGUI {
         ImageViewerGUI imageViewer = new ImageViewerGUI();
         imageViewer.setVisible(true);
     }
+
+    private void openSettings() {
+        SettingsGUI settings = new SettingsGUI();
+        settings.setVisible(true);
+    }
+    
 
     private void setBackground() {
         try {
@@ -286,6 +293,9 @@ public class DesktopGUI {
 
     // Add other methods for adding components to the GUI, handling events, etc.
 
+    /*public void run() {
+
+    }*/
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             DesktopGUI gui = new DesktopGUI();
