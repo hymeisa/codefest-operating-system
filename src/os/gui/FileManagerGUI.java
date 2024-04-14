@@ -1,4 +1,4 @@
-package gui;
+package src.os.gui;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
-public class FileManagerGUI {
+public class FileManagerGUI implements Runnable{
 
     private JFrame frame;
     private JList<String> fileList;

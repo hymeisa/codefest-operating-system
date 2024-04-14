@@ -8,6 +8,10 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import src.os.*;
+import src.os.gui.*;
+
+import src.os.APPLICATION_LAUNCHER.APPLICATION_LAUNCHER;
 
 
 public class DesktopGUI implements Runnable {
@@ -154,43 +158,43 @@ public class DesktopGUI implements Runnable {
     }
     
     private void openCalculator() {
-        ApplicationLauncher.startProgram(new TextEditorGUI());
+        OS.application_launcher.startProgram(new TextEditorGUI());
         //CalculatorGUI calculator = new CalculatorGUI();
         //calculator.setVisible(true);
     }
 
     private void openTextEditor() {
-        ApplicationLauncher.startProgram(new TextEditorGUI());
+        OS.application_launcher.startProgram(new TextEditorGUI());
         //TextEditorGUI textEditor = new TextEditorGUI();
         //textEditor.setVisible(true);
     }    
 
     private void openTaskManager() {
-        ApplicationLauncher.startProgram(new TaskManagerGUI());
+        OS.application_launcher.startProgram(new OS.TaskManagerGUI());
         //TaskManagerGUI taskManager = new TaskManagerGUI(this); // Pass the reference to DesktopGUI
         //taskManager.show();
     }
 
     private void openFileManager() {
-        ApplicationLauncher.startProgram(new FileManagerGUI());
+        OS.application_launcher.startProgram(new FileManagerGUI());
         //FileManagerGUI fileManager = new FileManagerGUI();
         //fileManager.show();
     }
 
     private void openNetwork() {
-        ApplicationLauncher.startProgram(new NetworkGUI());
+        OS.application_launcher.startProgram(new NetworkGUI());
         //NetworkGUI network = new NetworkGUI();
         //network.setVisible(true);
     }
 
     private void openTerminal() {
-        ApplicationLauncher.startProgram(new TerminalGUI());
+        OS.application_launcher.startProgram(new TerminalGUI());
         //TerminalGUI terminal = new TerminalGUI();
         //terminal.setVisible(true);
     }
 
     private void openImageViewer() {
-        ApplicationLauncher.startProgram(new ImageViewerGUI());
+        OS.application_launcher.startProgram(new ImageViewerGUI());
         //ImageViewerGUI imageViewer = new ImageViewerGUI();
         //imageViewer.setVisible(true);
     }

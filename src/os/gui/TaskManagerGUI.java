@@ -1,4 +1,4 @@
-package gui;
+package src.os.gui;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import src.os.*;
 
 public class TaskManagerGUI implements Runnable {
 

@@ -1,6 +1,6 @@
 package src.os;
 
-import src.os.APPLICATION_LAUNCHER.APPLICATION_LAUNCHER;
+import src.os.APPLICATION_LAUNCHER.*;
 import src.os.CPU.*;
 import src.os.RAM.*;
 import java.lang.Thread;
@@ -24,6 +24,9 @@ public class OS {
         while(true) {
             Thread.sleep(250);
         }
+    }
+
+    public class TaskManagerGUI {
     }
     
 }
