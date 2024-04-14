@@ -1,17 +1,22 @@
 package NETWORK;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Network {
+public class TestNetwork {
 
-    public static void fetchWebsiteInfo(String url) {
+    public static void main(String[] args) {
+        // Test fetching website information
+        fetchWebsiteInfoTest();
+    }
+
+    public static void fetchWebsiteInfoTest() {
         try {
+            String url = "https://www.example.com"; // Replace with the URL you want to test
             URL urlObj = new URL(url);
             HttpURLConnection conn = (HttpURLConnection) urlObj.openConnection();
 
@@ -39,7 +44,7 @@ public class Network {
             }
 
             conn.disconnect();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -63,5 +68,4 @@ public class Network {
         }
         return paragraphs.toString().split("\n");
     }
-
 }

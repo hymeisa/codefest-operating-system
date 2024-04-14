@@ -1,9 +1,8 @@
-package os.gui;
+package gui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,8 +17,8 @@ public class NetworkGUI extends JFrame {
     private JTextArea infoArea;
 
     public NetworkGUI() {
-        super("Website Information");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        super("codefestOS Network");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Set close operation to dispose
         setSize(500, 400);
         setLocationRelativeTo(null);
 
