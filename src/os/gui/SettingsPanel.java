@@ -13,7 +13,7 @@ public class SettingsPanel {
     private JPasswordField passwordField;
 
     public SettingsPanel() {
-        frame = new JFrame("Settings Panel");
+        frame = new JFrame("codefestOS Settings Panel");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         mainPanel = new JPanel();

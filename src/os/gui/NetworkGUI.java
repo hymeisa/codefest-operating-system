@@ -17,7 +17,7 @@ public class NetworkGUI extends JFrame {
     private JTextArea infoArea;
 
     public NetworkGUI() {
-        super("Website Information");
+        super("codefestOS Network");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Set close operation to dispose
         setSize(500, 400);
         setLocationRelativeTo(null);

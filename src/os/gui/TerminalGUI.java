@@ -14,7 +14,7 @@ public class TerminalGUI extends JFrame {
     private File currentDirectory;
 
     public TerminalGUI() {
-        super("Terminal");
+        super("codefestOS Terminal");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(600, 400);
         setLocationRelativeTo(null);

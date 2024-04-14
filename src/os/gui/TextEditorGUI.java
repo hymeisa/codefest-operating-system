@@ -11,7 +11,7 @@ public class TextEditorGUI extends JFrame {
     private JFileChooser fileChooser;
 
     public TextEditorGUI() {
-        setTitle("Text Editor");
+        setTitle("codefestOS Text Editor");
         setSize(300, 300);
         setLocationRelativeTo(null);
 
