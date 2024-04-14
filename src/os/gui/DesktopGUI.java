@@ -154,38 +154,45 @@ public class DesktopGUI implements Runnable {
     }
     
     private void openCalculator() {
-        CalculatorGUI calculator = new CalculatorGUI();
-        calculator.setVisible(true);
+        ApplicationLauncher.startProgram(new TextEditorGUI());
+        //CalculatorGUI calculator = new CalculatorGUI();
+        //calculator.setVisible(true);
     }
 
     private void openTextEditor() {
-        TextEditorGUI textEditor = new TextEditorGUI();
-        textEditor.setVisible(true);
+        ApplicationLauncher.startProgram(new TextEditorGUI());
+        //TextEditorGUI textEditor = new TextEditorGUI();
+        //textEditor.setVisible(true);
     }    
 
     private void openTaskManager() {
-        TaskManagerGUI taskManager = new TaskManagerGUI(this); // Pass the reference to DesktopGUI
-        taskManager.show();
+        ApplicationLauncher.startProgram(new TaskManagerGUI());
+        //TaskManagerGUI taskManager = new TaskManagerGUI(this); // Pass the reference to DesktopGUI
+        //taskManager.show();
     }
 
     private void openFileManager() {
-        FileManagerGUI fileManager = new FileManagerGUI();
-        fileManager.show();
+        ApplicationLauncher.startProgram(new FileManagerGUI());
+        //FileManagerGUI fileManager = new FileManagerGUI();
+        //fileManager.show();
     }
 
     private void openNetwork() {
-        NetworkGUI network = new NetworkGUI();
-        network.setVisible(true);
+        ApplicationLauncher.startProgram(new NetworkGUI());
+        //NetworkGUI network = new NetworkGUI();
+        //network.setVisible(true);
     }
 
     private void openTerminal() {
-        TerminalGUI terminal = new TerminalGUI();
-        terminal.setVisible(true);
+        ApplicationLauncher.startProgram(new TerminalGUI());
+        //TerminalGUI terminal = new TerminalGUI();
+        //terminal.setVisible(true);
     }
 
     private void openImageViewer() {
-        ImageViewerGUI imageViewer = new ImageViewerGUI();
-        imageViewer.setVisible(true);
+        ApplicationLauncher.startProgram(new ImageViewerGUI());
+        //ImageViewerGUI imageViewer = new ImageViewerGUI();
+        //imageViewer.setVisible(true);
     }
     
 
