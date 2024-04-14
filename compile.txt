@@ -1,1 +1,1 @@
-javac -d ../../FINAL APPLICATION_LAUNCHER/* BOOTLOADER/* CPU/* FILE_SYSTEM/*.java gui/*.java OS.java
+javac.exe -d ../../FINAL APPLICATION_LAUNCHER/* BOOTLOADER/* CPU/* gui/*.java OS.java
