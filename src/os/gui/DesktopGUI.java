@@ -144,6 +144,8 @@ public class DesktopGUI {
                     openNetwork();
                 } else if (name.equals("Terminal")) {
                     openTerminal();
+                } else if (name.equals("Image Viewer")) {
+                    openImageViewer();
                 } else {
                     JOptionPane.showMessageDialog(frame, "Launching " + name + "...");
                 }
@@ -181,7 +183,11 @@ public class DesktopGUI {
         TerminalGUI terminal = new TerminalGUI();
         terminal.setVisible(true);
     }
-    
+
+    private void openImageViewer() {
+        ImageViewerGUI imageViewer = new ImageViewerGUI();
+        imageViewer.setVisible(true);
+    }
 
     private void setBackground() {
         try {

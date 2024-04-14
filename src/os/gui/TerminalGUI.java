@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 
+
 public class TerminalGUI extends JFrame {
     private JTextArea outputArea;
     private JTextField inputField;
