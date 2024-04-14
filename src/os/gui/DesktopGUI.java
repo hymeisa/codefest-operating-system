@@ -8,6 +8,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+
 import src.os.*;
 import src.os.gui.*;
 
@@ -300,7 +301,7 @@ public class DesktopGUI implements Runnable {
     @Override
     public void run() {
         SwingUtilities.invokeLater(() -> {
-            DesktopGUI gui = new DesktopGUI();
+            //DesktopGUI gui = new DesktopGUI();
         });
     }
 }
