@@ -1,4 +1,4 @@
-package os.gui;
+package gui;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,7 +6,6 @@ import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.List;
 
 public class TerminalGUI extends JFrame {
     private JTextArea outputArea;
@@ -71,6 +70,9 @@ public class TerminalGUI extends JFrame {
                 break;
             case "rmdir":
                 deleteDirectory(args);
+                break;
+            case "pwd":
+                showCurrentDirectory();
                 break;
             case "help":
                 showHelp();
@@ -184,6 +186,10 @@ public class TerminalGUI extends JFrame {
         }
     }
 
+    private void showCurrentDirectory() {
+        outputArea.append("Current directory: " + currentDirectory.getAbsolutePath() + "\n");
+    }
+
     private void showHelp() {
         outputArea.append("Available commands:\n");
         outputArea.append("cd <directory>   : Change directory\n");
@@ -192,6 +198,7 @@ public class TerminalGUI extends JFrame {
         outputArea.append("mkdir <dirname>  : Create directory\n");
         outputArea.append("rm <filename>    : Delete file\n");
         outputArea.append("rmdir <dirname>  : Delete directory\n");
+        outputArea.append("pwd              : Show current directory\n");
         outputArea.append("help             : Show available commands\n");
         outputArea.append("pwn              : You've been pwned!\n");
     }

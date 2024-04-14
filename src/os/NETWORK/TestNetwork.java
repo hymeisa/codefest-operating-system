@@ -1,4 +1,4 @@
-package os.NETWORK;
+package NETWORK;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

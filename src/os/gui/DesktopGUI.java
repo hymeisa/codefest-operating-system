@@ -1,4 +1,4 @@
-package os.gui;
+package gui;
 
 import javax.swing.*;
 import java.awt.*;
@@ -93,6 +93,7 @@ public class DesktopGUI {
         // Initialize startup panel
         JPanel startupPanel = createStartupPanel();
         frame.getContentPane().add(startupPanel); // Add the startup panel to the frame's content pane
+        
 
         // Set frame visibility
         frame.setVisible(true);
@@ -141,6 +142,8 @@ public class DesktopGUI {
                     quitApplication();
                 } else if (name.equals("Network")) { // Add handling for the Network button
                     openNetwork();
+                } else if (name.equals("Terminal")) {
+                    openTerminal();
                 } else {
                     JOptionPane.showMessageDialog(frame, "Launching " + name + "...");
                 }
@@ -172,6 +175,11 @@ public class DesktopGUI {
     private void openNetwork() {
         NetworkGUI network = new NetworkGUI();
         network.setVisible(true);
+    }
+
+    private void openTerminal() {
+        TerminalGUI terminal = new TerminalGUI();
+        terminal.setVisible(true);
     }
     
 
