@@ -3,7 +3,7 @@ package src.os.CPU;
 import java.lang.Thread;
 
 public class CPU {
-    private int _num_cores = 4;
+    private int _num_cores = 8;
     public CPU() {
         this._num_cores -= 1;
     }
