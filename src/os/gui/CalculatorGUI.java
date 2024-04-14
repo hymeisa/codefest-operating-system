@@ -9,7 +9,7 @@ public class CalculatorGUI extends JFrame {
     private JTextField textField;
 
     public CalculatorGUI() {
-        setTitle("codefestOS Calculator");
+        setTitle("Calculator");
         setSize(300, 400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);

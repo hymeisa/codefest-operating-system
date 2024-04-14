@@ -19,7 +19,7 @@ public class TaskManagerGUI {
 
     public TaskManagerGUI(DesktopGUI desktopGUI) {
         this.desktopGUI = desktopGUI; // Store the reference to DesktopGUI
-        frame = new JFrame("codefestOS Task Manager");
+        frame = new JFrame("Task Manager");
         // Prevent closing the application when the frame is closed
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLayout(new BorderLayout());

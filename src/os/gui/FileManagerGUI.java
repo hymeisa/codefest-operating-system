@@ -16,7 +16,7 @@ public class FileManagerGUI {
     private File currentDirectory;
 
     public FileManagerGUI() {
-        frame = new JFrame("codefestOS File Manager");
+        frame = new JFrame("File Manager");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLayout(new BorderLayout());
 

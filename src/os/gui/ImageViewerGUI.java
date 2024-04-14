@@ -11,7 +11,7 @@ public class ImageViewerGUI extends JFrame {
     private JLabel imageLabel;
 
     public ImageViewerGUI() {
-        super("codefestOS Image Viewer");
+        super("Image Viewer");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(500, 500);
         setLocationRelativeTo(null);
