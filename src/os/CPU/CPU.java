@@ -17,4 +17,8 @@ public class CPU {
 
         return false;
     }
+
+    public int _get_num_cores() {
+        return this._num_cores;
+    }
 }
