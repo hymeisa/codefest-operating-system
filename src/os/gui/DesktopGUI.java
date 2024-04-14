@@ -167,7 +167,7 @@ public class DesktopGUI implements Runnable {
     }    
 
     private void openTaskManager() {
-        ApplicationLauncher.startProgram(new TaskManagerGUI());
+        ApplicationLauncher.startProgram((Runnable)(new TaskManagerGUI()));
         //TaskManagerGUI taskManager = new TaskManagerGUI(this); // Pass the reference to DesktopGUI
         //taskManager.show();
     }
