@@ -1,4 +1,4 @@
-package src.os.FILE_SYSTEM;
+package FILE_SYSTEM;
 import java.io.*;
 
 public class FileSystem {
